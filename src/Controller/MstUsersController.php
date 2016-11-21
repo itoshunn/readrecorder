@@ -12,6 +12,17 @@ class MstUsersController extends AppController
 {
 
     /**
+     * initialize
+     */
+    public function initialize() {
+        parent::initialize();
+        
+        // lugout action を許可
+        $this->Auth->allow(['logout']);
+    }
+
+
+    /**
      * Index method
      *
      * @return \Cake\Network\Response|null
@@ -109,9 +120,12 @@ class MstUsersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
     
+    /**
+     * ログイン処理
+     * @return type
+     */
     public function login()
     {
-        $this->log('MstUsers -login');
         // post request
         if ($this->request->is('post')) {
             // 
@@ -125,5 +139,15 @@ class MstUsersController extends AppController
             $this->Flash->error('あなたのユーザー名またはパスワードが不正です');
             
         }
+    }
+    
+    /**
+     * ログアウト処理
+     * @return string URL
+     */
+    public function logout()
+    {
+        $this->Flash->success('ログアウトします');
+        return $this->redirect($this->Auth->logout());
     }
 }
