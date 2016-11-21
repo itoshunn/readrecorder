@@ -128,16 +128,18 @@ class MstUsersController extends AppController
     {
         // post request
         if ($this->request->is('post')) {
-            // 
+            
+            // 認証処理
             $user = $this->Auth->identify();
-            \Cake\Error\Debugger::dump($user);
             if ($user) {
                 // ユーザーを取得
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error('あなたのユーザー名またはパスワードが不正です');
-            
+            // 一致しない場合
+            else {
+                $this->Flash->error('あなたのユーザー名またはパスワードが不正です');
+            }
         }
     }
     
