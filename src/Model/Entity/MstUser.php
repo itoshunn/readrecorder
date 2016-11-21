@@ -2,7 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-
+use Cake\Auth\DefaultPasswordHasher;
 /**
  * MstUser Entity
  *
@@ -40,4 +40,15 @@ class MstUser extends Entity
     protected $_hidden = [
         'password'
     ];
+    
+    /**
+     * パスワードをハッシュ化する
+     * @param string $value
+     * @return string $value
+     */
+    protected function _setPassword($value)
+    {
+        $hasher = new DefaultPasswordHasher();
+        return $hasher->hash($value);
+    }
 }

@@ -11,12 +11,8 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('user_name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('password') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('sort_order') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created_user') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified_user') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -25,12 +21,8 @@
             <tr>
                 <td><?= $this->Number->format($mstUser->id) ?></td>
                 <td><?= h($mstUser->user_name) ?></td>
-                <td><?= h($mstUser->password) ?></td>
-                <td><?= $this->Number->format($mstUser->sort_order) ?></td>
                 <td><?= h($mstUser->created) ?></td>
-                <td><?= $this->Number->format($mstUser->created_user) ?></td>
                 <td><?= h($mstUser->modified) ?></td>
-                <td><?= $this->Number->format($mstUser->modified_user) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $mstUser->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $mstUser->id]) ?>
