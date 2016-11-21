@@ -108,4 +108,22 @@ class MstUsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    
+    public function login()
+    {
+        $this->log('MstUsers -login');
+        // post request
+        if ($this->request->is('post')) {
+            // 
+            $user = $this->Auth->identify();
+            \Cake\Error\Debugger::dump($user);
+            if ($user) {
+                // ユーザーを取得
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error('あなたのユーザー名またはパスワードが不正です');
+            
+        }
+    }
 }
