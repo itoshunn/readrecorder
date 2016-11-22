@@ -12,7 +12,7 @@
             echo $this->Form->input('title');
             echo $this->Form->input('auther_name');
             echo $this->Form->input('isbn');
-            echo $this->Form->input('buy_date', ['empty' => true]);
+            echo $this->Form->input('buy_date', ['empty' => true, 'type' => 'text']);
             echo $this->Form->input('buy_user');
             echo $this->Form->input('sort_order');
             echo $this->Form->input('created_user');

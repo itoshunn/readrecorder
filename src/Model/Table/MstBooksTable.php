@@ -64,7 +64,7 @@ class MstBooksTable extends Table
         $validator
             ->dateTime('buy_date')
             ->allowEmpty('buy_date');
-
+        
         $validator
             ->integer('buy_user')
             ->allowEmpty('buy_user');
