@@ -11,9 +11,6 @@
         <?php
             echo $this->Form->input('user_name');
             echo $this->Form->input('password');
-            echo $this->Form->input('sort_order');
-            echo $this->Form->input('created_user');
-            echo $this->Form->input('modified_user');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
