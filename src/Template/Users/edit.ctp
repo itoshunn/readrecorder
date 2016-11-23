@@ -19,6 +19,11 @@
         <?php
             echo $this->Form->input('user_name');
             echo $this->Form->input('password');
+            echo $this->Form->checkbox('done');
+            echo $this->Form->label('checkbox');
+            echo h($user->created);
+            $this->log($user);
+            
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
