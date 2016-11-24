@@ -10,6 +10,11 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+    
+    public function initialize() {
+        parent::initialize();
+        
+    }
 
     /**
      * Index method
@@ -22,6 +27,17 @@ class UsersController extends AppController
 
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
+    }
+    
+    public function test($id = null)
+    {
+        // 変数を　ctp にセットする場合
+        $this->set('id', $id);  // output_ctp : 'echo $id;'
+        
+        $user = $this->Users->get($id, ['contain' => 'Books']);
+        $this->log($user->user_name);
+        
+        $this->set('user', $user);
     }
 
     /**
