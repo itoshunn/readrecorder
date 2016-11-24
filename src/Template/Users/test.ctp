@@ -32,6 +32,15 @@
  </tr>
  <?php endforeach; ?>
 
+ <?php
+ $check1 = TRUE;
+ $check2 = FALSE;
+ if ($check1 > $check2) {
+     echo "check1 is" . $check1;    // ture = 1
+     echo "check2 is" . $check2;    // false は値なし
+ }
+ ?>
+ 
 <!--
 ・チェックボックスと連動した入力を作るには
 ・ok:他テーブルの項目を呼び出す
