@@ -64,9 +64,16 @@ class UsersController extends AppController
      */
     public function add()
     {
+        // カラの Users クラス（エンティティ）を作成
         $user = $this->Users->newEntity();
+        
+        // post request があれば追加処理を行う
         if ($this->request->is('post')) {
+            
+            // エンティティに対しての patch を取得
             $user = $this->Users->patchEntity($user, $this->request->data);
+            
+            // 保存とその結果(bool)
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
