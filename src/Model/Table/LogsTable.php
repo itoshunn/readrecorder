@@ -95,4 +95,36 @@ class LogsTable extends Table
 
         return $rules;
     }
+    
+    public function beforeSave($event, $entity, $options) {
+        if ($entity->book_title) {
+            $entity = $this->_addBookTitle($entity->book_title);
+        }
+    }
+    
+    protected function _addBookTitle($book_title) {
+
+        
+        // Books から 同名のタイトルがあるか調べる
+        $query = $this->Books->find()
+                ->where(['Books.title' => $book_title]);
+        
+        if (empty($query->first())) {
+            // 同名のタイトルがない場合
+            pr($query->first());
+            $result = $this->Books->newEntity([
+                'title' => $book_title,
+                'author' => 'test',
+                'user_id' => 1
+            ]);
+            pr($result);
+
+            return $result;
+        }
+        else {
+            $result = $query->first();
+            return $result;
+        }
+    }
+    
 }

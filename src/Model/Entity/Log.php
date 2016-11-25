@@ -32,6 +32,16 @@ class Log extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false
+        'id' => false,
+        'book_title' => true
     ];
+    
+    protected function _getBookTitle() {
+        if (isset($this->_properties['book_title'])) {
+            return $this->_properties['book_title'];
+        }
+        else if (empty ($this->book_id)) {
+            return '';
+        }
+    }
 }
