@@ -31,6 +31,9 @@ class UsersController extends AppController
     
     public function test($id = null)
     {
+        // testレイアウトを指定
+        $this->viewBuilder()->layout('test');
+        
         // 変数を　ctp にセットする場合
         $this->set('id', $id);  // output_ctp : 'echo $id;'
         
