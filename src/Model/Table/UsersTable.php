@@ -40,6 +40,7 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        // TODO 後で削除
         $this->hasMany('Books', [
             'foreignKey' => 'user_id'
         ]);
