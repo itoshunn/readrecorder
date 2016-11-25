@@ -71,7 +71,7 @@ class LogsTable extends Table
         $validator
             ->date('finish_date')
             ->requirePresence('finish_date', 'create')
-            ->notEmpty('finish_date');
+            ->allowEmpty('finish_date');
 
         $validator
             ->boolean('read_flag')

@@ -32,8 +32,8 @@
                 <td><?= h($log->finish_date) ?></td>
                 <td><?= h($log->read_flag) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $log->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $log->id]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $log->id]) ?><br/>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $log->id]) ?><br/>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $log->id], ['confirm' => __('Are you sure you want to delete # {0}?', $log->id)]) ?>
                 </td>
             </tr>

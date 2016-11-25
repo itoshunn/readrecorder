@@ -80,7 +80,7 @@ class LogsController extends AppController
     public function edit($id = null)
     {
         $log = $this->Logs->get($id, [
-            'contain' => []
+            'contain' => ['Books', 'Users']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $log = $this->Logs->patchEntity($log, $this->request->data);
