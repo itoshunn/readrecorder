@@ -53,12 +53,46 @@
     if ($id == '2') {
         test1($id);
     }
+ ?>
+ 
+ <?php
+    function checkflg($flg, $id) {
+        $checked = '';
+        if ($flg == $id) {
+            $checked = ' checked="checked" ';
+            return $checked;
+        } 
+        else {
+        return $checked;
+        }
+    }
+    
+    $flg = 1; 
+    $check = checkflg($flg, $id);
+
+    echo '<input type="checkbox" name="check', $id , 'value="' , $flg , '"' , $check , ' />';
+    
+    if ($check == '') {
+        echo 'flug =',  $flg;
+        echo $this->Form->input($id);
+    }
+    if ($flg == 1) {
+        echo 'flug =',  $flg;
+        echo $this->Form->input($id);
+    }
+    if ($flg != 1) {
+        echo 'flug !=',  $flg;
+        echo $this->Form->input($id);
+    }
 
  ?>
+ 
  
 <!--
 ・チェックボックスと連動した入力を作るには
     ・関数内で function を記述してみる
+        ・リアルタイムでやる場合
+            ・controller を使う！
 ・ok:他テーブルの項目を呼び出す
 ・日付を自動的に挿入するには
 ・【最優先】モックアップを作成する
