@@ -22,6 +22,8 @@ class LogsController extends AppController
             'contain' => ['Books', 'Users']
         ];
         $logs = $this->paginate($this->Logs);
+        
+        $this->log($logs);
 
         $this->set(compact('logs'));
         $this->set('_serialize', ['logs']);
@@ -39,7 +41,7 @@ class LogsController extends AppController
         $log = $this->Logs->get($id, [
             'contain' => ['Books', 'Users']
         ]);
-
+        
         $this->set('log', $log);
         $this->set('_serialize', ['log']);
     }
