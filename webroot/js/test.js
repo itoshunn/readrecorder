@@ -1,3 +1,7 @@
-window.onload = function(){
-  alert("Hello World!");
-}
+window.onload = function() {
+    hoge();
+};
+
+function hoge() {
+    alert("foo");
+};
