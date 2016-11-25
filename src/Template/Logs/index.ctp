@@ -19,8 +19,6 @@
                 <th scope="col"><?= $this->Paginator->sort('start_date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('finish_date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('read_flag') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -29,12 +27,10 @@
             <tr>
                 <td><?= $this->Number->format($log->id) ?></td>
                 <td><?= $log->has('book') ? $this->Html->link($log->book->title, ['controller' => 'Books', 'action' => 'view', $log->book->id]) : '' ?></td>
-                <td><?= $log->has('user') ? $this->Html->link($log->user->id, ['controller' => 'Users', 'action' => 'view', $log->user->id]) : '' ?></td>
+                <td><?= $log->has('user') ? $this->Html->link($log->user->user_name, ['controller' => 'Users', 'action' => 'view', $log->user->id]) : '' ?></td>
                 <td><?= h($log->start_date) ?></td>
                 <td><?= h($log->finish_date) ?></td>
                 <td><?= h($log->read_flag) ?></td>
-                <td><?= h($log->created) ?></td>
-                <td><?= h($log->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $log->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $log->id]) ?>

@@ -12,19 +12,19 @@
     </ul>
 </nav>
 <div class="logs view large-9 medium-8 columns content">
-    <h3><?= h($log->id) ?></h3>
+    <h3>read log:<?= h($log->id) ?></h3>
     <table class="vertical-table">
+        <tr>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($log->id) ?></td>
+        </tr>
         <tr>
             <th scope="row"><?= __('Book') ?></th>
             <td><?= $log->has('book') ? $this->Html->link($log->book->title, ['controller' => 'Books', 'action' => 'view', $log->book->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('User') ?></th>
-            <td><?= $log->has('user') ? $this->Html->link($log->user->id, ['controller' => 'Users', 'action' => 'view', $log->user->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($log->id) ?></td>
+            <td><?= $log->has('user') ? $this->Html->link($log->user->user_name, ['controller' => 'Users', 'action' => 'view', $log->user->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Start Date') ?></th>
@@ -33,18 +33,6 @@
         <tr>
             <th scope="row"><?= __('Finish Date') ?></th>
             <td><?= h($log->finish_date) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($log->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($log->modified) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Read Flag') ?></th>
-            <td><?= $log->read_flag ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
 </div>
