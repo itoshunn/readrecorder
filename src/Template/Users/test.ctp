@@ -24,6 +24,8 @@
      <td><?= h($books->user_id) ?></td>
      <td><?= h($books->created) ?></td>
      <td><?= h($books->modified) ?></td>
+     
+     <!-- action クラス -->
      <td class="actions">
          <?= $this->Html->link(__('View'), ['controller' => 'Books', 'action' => 'view', $books->id]) ?>
          <?= $this->Html->link(__('Edit'), ['controller' => 'Books', 'action' => 'edit', $books->id]) ?>
@@ -41,8 +43,22 @@
  }
  ?>
  
+ <?php
+    echo 'echo test ' . $id;
+ 
+    function test1($id){
+        echo 'function test' . $id;
+    }
+    
+    if ($id == '2') {
+        test1($id);
+    }
+
+ ?>
+ 
 <!--
 ・チェックボックスと連動した入力を作るには
+    ・関数内で function を記述してみる
 ・ok:他テーブルの項目を呼び出す
 ・日付を自動的に挿入するには
 ・【最優先】モックアップを作成する
