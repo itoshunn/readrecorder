@@ -1,25 +1,27 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
+        <li class="heading"><?= __('メニュー') ?></li>
         <li><?= $this->Html->link(__('記録一覧'), ['controller' => 'ReadLogs', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('記録追加'), ['controller' => 'ReadLogs', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('書籍一覧'), ['controller' => 'Books', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('書籍登録'), ['controller' => 'Books', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('書籍追加'), ['controller' => 'Books', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('ユーザー一覧'), ['controller' => 'Users', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('ユーザー追加'), ['controller' => 'Users', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="users view large-9 medium-8 columns content">
-    <h3><?= h($user->id) ?></h3>
+    <h3>User : <?= h($user->id) ?></h3>
     <table class="vertical-table">
+　       <tr>
+            <th scope="row"></th>
+                <td class="actions">
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                </td>
+        </tr>
         <tr>
             <th scope="row"><?= __('User Name') ?></th>
             <td><?= h($user->user_name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Password') ?></th>
-            <td><?= h($user->password) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
