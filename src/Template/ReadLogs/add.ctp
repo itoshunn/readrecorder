@@ -15,7 +15,8 @@
         <legend><?= __('読書記録 作成') ?></legend>
         <?php
             echo $this->Form->input('book_id', ['options' => $books]);
-            echo $this->Form->input('book_tltle', ['type' => 'text']);
+//            echo $this->Form->input('book_tltle', ['type' => 'text']);
+//            echo $this->Form->input('author', ['type' => 'text']);
             echo $this->Form->input('user_id', ['options' => $users]);
             echo $this->Form->input('start_date');
             echo $this->Form->input('finish_date', array('selected' => ' ', 'empty' => ' '));

@@ -71,7 +71,7 @@ class ReadLogsTable extends Table
         $validator
             ->date('finish_date')
             ->requirePresence('finish_date', 'create')
-            ->notEmpty('finish_date');
+            ->allowEmpty('finish_date');
 
         $validator
             ->boolean('read_flag')
@@ -95,4 +95,31 @@ class ReadLogsTable extends Table
 
         return $rules;
     }
+    
+    /**
+     * beforeSave
+     * @param type $event
+     * @param type $entity
+     * @param type $options
+     */
+    public function beforeSave($event, $entity ,$options)
+    {
+        if ($entity->book_title) {
+            // TODO 書籍登録処理（未完成）
+            //$entity->books = $this->_buildBooks($entity->book_title, $entity->author);
+        }
+    }
+
+    /**
+     * 記録追加時に、書籍に対しても追加登録を行う
+     * @param type $title
+     * @param type $author
+     * @return type
+     */
+    protected function _buildBooks($title, $author)
+    {
+        $result = $this->Books->newEntity(['book_title' => $title, 'author' => $author]);
+        return $result;
+    }
 }
+
