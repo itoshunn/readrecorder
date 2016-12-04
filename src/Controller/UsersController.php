@@ -14,6 +14,9 @@ class UsersController extends AppController
     public function initialize() {
         parent::initialize();
         
+        $this->Auth->allow(['logout']); // logout へのアクセスを許可
+        $this->Auth->allow(['add']);    // addt へのアクセスを許可
+        
     }
 
     /**
@@ -41,6 +44,35 @@ class UsersController extends AppController
         $this->log($user->user_name);
         
         $this->set('user', $user);
+    }
+    
+    /**
+     * ログイン処理
+     * @return type
+     */
+    public function login()
+    {
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            
+            // user が取得できれば
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            // 取得できなかった場合
+            $this->Flash->error('ユーザー名またはパスワードが不正です。');
+        }
+    }
+    
+    /**
+     * ログアウト処理
+     * @return type
+     */
+    public function logout()
+    {
+        $this->Flash->success('ログアウトします');
+        return $this->redirect($this->Auth->logout());
     }
 
     /**
