@@ -1,7 +1,7 @@
 <?php
 use Migrations\AbstractMigration;
 
-class CreateLogs extends AbstractMigration
+class CreateReadLogs extends AbstractMigration
 {
     /**
      * Change Method.
@@ -12,7 +12,7 @@ class CreateLogs extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('logs');
+        $table = $this->table('read_logs');
         $table->addColumn('book_id', 'integer', [
             'default' => null,
             'limit' => 11,
