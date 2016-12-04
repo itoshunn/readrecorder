@@ -40,30 +40,28 @@ class AppController extends Controller
     {
         parent::initialize();
 
-        //$this->loadComponent('RequestHandler');
+//        $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         
-        // 認証処理
+        // 認証処理の読み込み
         $this->loadComponent('Auth', [
-            
-            // 認証ハンドラ
+            // 認証方法
             'authenticate' => [
                 'Form' => [
-                    'userModel' => 'MstUsers',
                     'fields' => [
                         'username' => 'user_name',
                         'password' => 'password'
                     ]
                 ]
             ],
-            // ログイン処理
+            // ログインアクション
             'loginAction' => [
-                'controller' => 'MstUsers',
+                'controller' => 'Users',
                 'action' => 'login'
-            ]
+            ],
+            // 未承認時の処理
+            'unauthorizedRedirect' => $this->referer()  //　元のページを返す
         ]);
-        
-        // diplay アクションを許可
         $this->Auth->allow(['display']);
     }
 
