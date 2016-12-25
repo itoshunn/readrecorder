@@ -27,7 +27,6 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
-
     /**
      * Initialization hook method.
      *
@@ -41,8 +40,29 @@ class AppController extends Controller
     {
         parent::initialize();
 
-        $this->loadComponent('RequestHandler');
+//        $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        
+        // 認証処理の読み込み
+        $this->loadComponent('Auth', [
+            // 認証方法
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'user_name',
+                        'password' => 'password'
+                    ]
+                ]
+            ],
+            // ログインアクション
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+            // 未承認時の処理
+            'unauthorizedRedirect' => $this->referer()  //　元のページを返す
+        ]);
+        $this->Auth->allow(['display']);
     }
 
     /**
